@@ -5,8 +5,8 @@
   import Nested from "./alarm/Nested.svelte";
   import { alarm_toggle, logined } from "./store/store";
   const handleSignOut = () => {
-    signOut();
     location.replace("http://localhost:5173");
+    signOut();
   };
 
   // export let data;

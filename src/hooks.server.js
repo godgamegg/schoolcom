@@ -5,7 +5,7 @@ import { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, NODE_ENV } from '$env/static/pr
 import clientPromise from '$lib/database/clientPromise';
 
 export const { handle } = SvelteKitAuth({
- providers: [GoogleProvider({ clientId: GOOGLE_CLIENT_ID, clientSecret: GOOGLE_CLIENT_SECRET })],
+ providers: [GoogleProvider({ clientId: GOOGLE_CLIENT_ID, clientSecret: GOOGLE_CLIENT_SECRET,allowDangerousEmailAccountLinking: true })],
  adapter: MongoDBAdapter(clientPromise, { databaseName: NODE_ENV }),
  pages: {
     signIn: '/login',

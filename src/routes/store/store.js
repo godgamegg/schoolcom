@@ -43,3 +43,6 @@ export const writing_comment_toggle = writable(0);
 
 //login
 export const login_username = writable("");
+
+
+export const usergmail = writable("");
