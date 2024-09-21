@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   import { writing_more_toggle } from "../store/store";
 
   let on_write = () => {
@@ -7,12 +7,12 @@
   };
 
   import Nested from "../writing_more/Nested.svelte";
-</script>
+</script> -->
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <!-- svelte-ignore missing-declaration -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="writing" on:click={on_write}>
+<!-- <div class="writing" on:click={on_write}>
   <div class="writing_top">
     <div class="writing_title">2차 국어 수행</div>
     <div class="writing_writer">장준혁 작성</div>
@@ -33,8 +33,8 @@
   </div>
 </div>
 
-<Nested />
-
+<Nested /> -->
+<!-- 
 <style>
   .writing {
     width: 200px;
@@ -91,4 +91,4 @@
     flex-direction: row;
     align-items: center;
   }
-</style>
+</style> -->

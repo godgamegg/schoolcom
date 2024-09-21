@@ -49,6 +49,35 @@
     "준비물",
     "이벤트",
   ];
+
+  let title = "";
+  let writing = "";
+
+  // "확인" 버튼 클릭 시 데이터를 서버로 전송하는 함수
+  const submitData = async () => {
+    const formData = {
+      title,
+      writing,
+    };
+
+    try {
+      const response = await fetch("/write_page", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+      console.log("Update result:", result);
+    } catch (error) {
+      console.error("Error updating user data:", error);
+    }
+    writetoggle.set(0);
+    title = "";
+    writing = "";
+  };
 </script>
 
 {#if write_1 == 1}<div class={`write_page write_page_open`}>
@@ -64,10 +93,18 @@
       />
     </div>
     <div class="write_page_middle">
-      <textarea class="main_textarea" name="" id=""></textarea>
-      <textarea class="write_textarea" name="" id=""></textarea>
+      <input
+        class="main_textarea"
+        name=""
+        maxlength="11"
+        id=""
+        bind:value={title}
+      />
+      <textarea class="write_textarea" name="" id="" bind:value={writing}
+      ></textarea>
     </div>
 
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
     <div class="write_page_bottom">
       <!-- svelte-ignore a11y-no-static-element-interactions -->
       <div class="write_page_tag">
@@ -99,7 +136,8 @@
         {/if}
       </div>
       <div class="file-"></div>
-      <div class="write_sending_button">
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
+      <div class="write_sending_button" on:click={submitData}>
         <img src="/write_sending.png" alt="" />
       </div>
     </div>

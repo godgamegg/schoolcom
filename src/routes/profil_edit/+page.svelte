@@ -11,22 +11,23 @@
   let teacher_secret = "";
   let teacher_secret1 = "";
 
-  let nowmessage = "";
-  let mymessage1 = "";
-  let mymessage2 = "";
-  let mymessage3 = "";
-  let mymessage4 = "";
-  let mymessage5 = "";
-  let mymessage6 = "";
-  let mymessage7 = "";
-  let nowlocation = "";
-  let birth = "";
-  let birth_lock = false;
-  let grade = 0;
-  let classNo = 0;
-  let position = "학생";
-  let teacher_position = "";
-  let username = "";
+  let nowmessage = data.user[0].nowmessage;
+  let mymessage1 = data.user[0].mymessage1;
+  let mymessage2 = data.user[0].mymessage2;
+  let mymessage3 = data.user[0].mymessage3;
+  let mymessage4 = data.user[0].mymessage4;
+  let mymessage5 = data.user[0].mymessage5;
+  let mymessage6 = data.user[0].mymessage6;
+  let mymessage7 = data.user[0].mymessage7;
+  let nowlocation = data.user[0].nowlocation;
+  let birth = data.user[0].birth;
+  // let birth_lock = false;
+  let grade = data.user[0].grade;
+  let num = data.user[0].num;
+  let classNo = data.user[0].classNo;
+  let position = data.user[0].position;
+  let teacher_position = data.user[0].teacher_position;
+  let username = data.user[0].username;
 
   // "확인" 버튼 클릭 시 데이터를 서버로 전송하는 함수
   const submitData = async () => {
@@ -41,9 +42,10 @@
       mymessage7,
       nowlocation,
       birth,
-      birth_lock,
+      // birth_lock,
       grade,
-      class: classNo,
+      num,
+      classNo,
       position,
       teacher_position,
       username,
@@ -205,10 +207,10 @@
         <input class="edituser_input" type="date" bind:value={birth} />
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div class="edituser_change" on:click={submitData}><div>확인</div></div>
-        <div style="font-weight: bold; font-size:30px; margin-left:40px">
+        <!-- <div style="font-weight: bold; font-size:30px; margin-left:40px">
           <input style="zoom:2;" type="checkbox" bind:checked={birth_lock} /> 생일
           비공개하기
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -221,6 +223,8 @@
         <div style="font-weight: bold; font-size:30px">학년</div>
         <input class="edituser_input1" type="number" bind:value={classNo} />
         <div style="font-weight: bold; font-size:30px">반</div>
+        <input class="edituser_input1" type="number" bind:value={num} />
+        <div style="font-weight: bold; font-size:30px">번</div>
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div class="edituser_change" on:click={submitData}><div>확인</div></div>
       </div>
@@ -238,7 +242,7 @@
           <option value="학생">학생</option>
           <option value="선생님">선생님</option>
         </select>
-        <div
+        <!-- <div
           style="font-weight: bold; font-size:30px; margin-left:30px; margin-right:10px"
         >
           비밀번호
@@ -248,7 +252,7 @@
           class="edituser_input"
           type="password"
           bind:value={teacher_secret}
-        />
+        /> -->
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <!-- svelte-ignore a11y-no-static-element-interactions -->
         <div class="edituser_change" on:click={submitData}><div>확인</div></div>
@@ -264,7 +268,7 @@
           style="width:200px; font-size:25px;"
           bind:value={teacher_position}
         />
-        <div
+        <!-- <div
           style="font-weight: bold; font-size:30px; margin-left:30px; margin-right:10px"
         >
           비밀번호
@@ -274,7 +278,7 @@
           class="edituser_input"
           type="password"
           bind:value={teacher_secret1}
-        />
+        /> -->
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div class="edituser_change" on:click={submitData}><div>확인</div></div>
       </div>
