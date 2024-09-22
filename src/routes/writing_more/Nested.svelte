@@ -16,42 +16,58 @@
     writing_comment_toggle.set(1);
     console.log(1);
   };
+
+  export let j;
+  export let data;
 </script>
 
-{#if writing_more_1 == 1}
-  <div class={`writing_more_page writing_more_page_open`}>
-    <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-    <div class="writing_more_page_top">
-      <div class="writing_more_page_title"><div>(제목)</div></div>
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <img
-        on:click={writing_more_off}
-        class="writing_more_page_top_x"
-        src="/white_x.png"
-        alt=""
-      />
-    </div>
-    <div class="writing_more_page_middle"></div>
-    <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div class="writing_more_page_bottom">
-      <div style="flex-grow:1; display:flex; flex-direction:row">
-        <div class="writing_more_good writing_more_goodbad">
-          <img width="50px" src="/good_on.png" alt="" />
-          <div style="color:white; font-weight:bold; font-size:25px">100</div>
+{#if data}
+  {#if writing_more_1 == 1}
+    <div class={`writing_more_page writing_more_page_open`}>
+      <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+      <div class="writing_more_page_top">
+        <div class="writing_more_page_title">
+          <div>{data.write[j].title}</div>
         </div>
-        <div class="writing_more_bad writing_more_goodbad">
-          <img width="50px" src="/bad_on.png" alt="" />
-          <div style="color:white; font-weight:bold; font-size:25px">100</div>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <img
+          on:click={writing_more_off}
+          class="writing_more_page_top_x"
+          src="/white_x.png"
+          alt=""
+        />
+      </div>
+      <div class="writing_more_page_middle">
+        <div style="margin:40px">{data.write[j].writing}</div>
+      </div>
+      <!-- svelte-ignore a11y-no-static-element-interactions -->
+      <div class="writing_more_page_bottom">
+        <div style="flex-grow:1; display:flex; flex-direction:row">
+          <div
+            style="margin-right:20px"
+            class="writing_more_good writing_more_goodbad"
+          >
+            <img width="50px" src="/good_on.png" alt="" />
+            <div style="color:white; font-weight:bold; font-size:25px">
+              {data.write[j].like}
+            </div>
+          </div>
+          <div class="writing_more_bad writing_more_goodbad">
+            <img width="50px" src="/bad_on.png" alt="" />
+            <div style="color:white; font-weight:bold; font-size:25px">
+              {data.write[j].hate}
+            </div>
+          </div>
+        </div>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div class="writing_more_answer_open" on:click={comment_on}>
+          <img style="margin-right:10px;" src="/chatting.png" alt="" />
+          <div>댓글 보기 / 달기</div>
         </div>
       </div>
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <div class="writing_more_answer_open" on:click={comment_on}>
-        <img style="margin-right:10px;" src="/chatting.png" alt="" />
-        <div>댓글 보기 / 달기</div>
-      </div>
     </div>
-  </div>
-  <Nested />
+    <Nested />
+  {/if}
 {/if}
 
 <style>
@@ -99,7 +115,6 @@
     background-color: #f9f7f7;
     display: flex;
     flex-direction: column;
-    justify-content: center;
   }
   .writing_more_page_bottom {
     width: 100%;

@@ -2,17 +2,19 @@
   // @ts-nocheck
 
   import { writetoggle } from "../store/store";
+  import { writing_more_toggle } from "../store/store";
+
   let write = () => {
     writetoggle.set(1);
   };
 
-  let tag_plused = (i, j) => {};
+  // 현재 클릭된 j 값을 저장할 변수
+  let currentJ = null;
 
-  import { writing_more_toggle } from "../store/store";
-
-  let on_write = () => {
+  let on_write = (j) => {
     writing_more_toggle.set(1);
-    console.log(1);
+    console.log(`Clicked on item with index ${j}`);
+    currentJ = j; // 클릭된 j 값 저장
   };
 
   import Nested from "../writing_more/Nested.svelte";
@@ -21,6 +23,7 @@
   export let data;
 </script>
 
+<!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="community_container">
   <div class="community_name_line">
     <div class="community_name">
@@ -37,20 +40,17 @@
     <div class="community_writes_row"></div>
     <div class="community_writes_row"></div>
     <div class="community_writes_row1">
-      <!-- <Nested /> -->
-      <!-- <div>{data.write.length}</div> -->
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
       {#each data.write as i, j}
-        <!-- svelte-ignore missing-declaration -->
-        <div class="writing" on:click={on_write}>
+        <!-- 각 글에 대해 고유한 j 값을 가진 div -->
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div class="writing" on:click={() => on_write(j)}>
           <div class="writing_top">
             <div class="writing_title">{data.write[j].title}</div>
-            <div class="writing_writer">장준혁 작성</div>
+            <div class="writing_writer">{data.write[j].writer}</div>
           </div>
           <div class="writing_mid">{data.write[j].writing}</div>
           <div class="writing_bottom">
-            <div style="flex-grow:1;display:flex; flex-direction:row ">
+            <div style="flex-grow:1;display:flex; flex-direction:row">
               <div class="writing_good writing_goodbad">
                 <img width="30px" src="/good_on.png" alt="" />
                 <div style="color:white; font-weight:bold">
@@ -68,7 +68,10 @@
           </div>
         </div>
 
-        <Nested />
+        <!-- 클릭된 항목만 Nested 컴포넌트로 렌더링 -->
+        {#if currentJ === j}
+          <Nested {data} {j} />
+        {/if}
       {/each}
     </div>
   </div>
@@ -111,7 +114,6 @@
     margin-top: 20px;
   }
   .write_div {
-    /* width: 150px; */
     font-weight: bold;
     text-align: center;
     font-size: 18px;
@@ -169,25 +171,17 @@
   }
   .community_writes_row {
     width: 20%;
-    /* height: 100px;  */
     display: flex;
-    /* align-items: center; */
-    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
-    /* overflow-y: ; */
   }
   .community_writes_row1 {
     width: 60%;
     display: flex;
     align-items: center;
-    /* flex-direction: row; */
     flex-wrap: wrap;
     border-left: #4370a7 1px solid;
-    /* align-items: center; */
     justify-content: center;
-    /* padding-left: 20px; */
-    /* overflow-y: scroll; */
   }
   .writing {
     width: 200px;
@@ -215,7 +209,6 @@
     height: 40px;
     background-color: #1d4c81;
     display: flex;
-    /* justify-content: ; */
     align-items: center;
   }
   .writing_title {

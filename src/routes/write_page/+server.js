@@ -1,7 +1,6 @@
 import clientPromise from '$lib/database/clientPromise';
 import { NODE_ENV } from '$env/static/private';
 import { usergmail } from "../store/store";
-// export let data;
 
 export async function POST({ request }) {
   const client = await clientPromise;
@@ -11,7 +10,17 @@ export async function POST({ request }) {
 
   const data1 = await request.json();
 
+  let usergmail1="";
+  usergmail.subscribe((value) => {
+      usergmail1 = value;
+    });
+  // console.log(usergmail1)  
+  
+
+  let user;
   try {
+
+    user = await db.collection("users").findOne({email:usergmail1});
     const result = await coll.insertMany(
      [{
             title : data1.title,
@@ -20,8 +29,8 @@ export async function POST({ request }) {
             like : 0,
             hate : 0,
             date : new Date(),
-            written_page : "추가 예정"
-            
+            written_page : "추가 예정",
+            writer : user ? user.username : "No user found"
         }]  
     );
 

@@ -4,10 +4,7 @@ import clientPromise from '$lib/database/clientPromise';
 import { NODE_ENV } from '$env/static/private';
 import { usergmail } from '../store/store.js';
 
-let usergmail1="";
-usergmail.subscribe((value) => {
-    usergmail1 = value;
-  });
+
 // console.log(usergmail1)  
 
 
