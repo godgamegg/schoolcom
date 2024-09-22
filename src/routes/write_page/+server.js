@@ -30,7 +30,10 @@ export async function POST({ request }) {
             hate : 0,
             date : new Date(),
             written_page : "추가 예정",
-            writer : user ? user.username : "No user found"
+            writer : user ? user.username : "No user found", 
+            writer_grade : user ? user.grade : "No user found",
+            writer_class : user ? user.classNo : "No user found",
+            written_type : data1.par_type,
         }]  
     );
 
