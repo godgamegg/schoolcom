@@ -45,16 +45,6 @@
 
   export let data;
   // console.log();
-
-  // import { page } from "$app/stores"; // 현재 페이지 정보를 가져오는 store
-
-  // 쿼리 파라미터에서 number 값을 가져옴
-  let par_grade, par_classm, par_type;
-
-  // 반응형 선언: 페이지 URL이 바뀌면 number 값이 업데이트됨
-  $: par_grade = $page.url.searchParams.get("par_grade") || "0"; // 쿼리 파라미터가 없으면 기본값으로 '0'
-  $: par_class = $page.url.searchParams.get("par_class") || "0"; // 쿼리 파라미터가 없으면 기본값으로 '0'
-  $: par_type = $page.url.searchParams.get("par_type") || "0"; // 쿼리 파라미터가 없으면 기본값으로 '0'
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -154,14 +144,9 @@
         <div class="community_mypage_2">
           <div class="mypage_inform_1">
             <div class="mypage_inform">
-              <div class="mypage_inform_thing">
-                이름 : {data.user[0].username}
-              </div>
-              <div class="mypage_inform_thing">
-                반 : {data.user[0].grade}학년{data.user[0].classNo}반{data
-                  .user[0].num}번
-              </div>
-              <div class="mypage_inform_thing">생일 : {data.user[0].birth}</div>
+              <div class="mypage_inform_thing">이름 :</div>
+              <div class="mypage_inform_thing">반 :</div>
+              <div class="mypage_inform_thing">생일 :</div>
             </div>
           </div>
           <div class="mypage_edit_1">
@@ -182,18 +167,12 @@
         <div
           class={`communitysite_folder ${schoolpage === 1 ? "communitysite_folder_open" : ""}`}
         >
-          <a href="/com_school?par_type=11"
-            ><div class="communitysite">공지</div></a
-          >
-          <a href="/com_school?par_type=12"
-            ><div class="communitysite">학교 소식</div></a
-          >
-          <a href="/com_school?par_type=13"
+          <a href="/com_school"><div class="communitysite">공지</div></a>
+          <a href="/com_school"><div class="communitysite">학교 소식</div></a>
+          <a href="/com_school"
             ><div class="communitysite">지금 우리 학교는</div></a
           >
-          <a href="/com_school?par_type=14"
-            ><div class="communitysite">자유게시판</div></a
-          >
+          <a href="/com_school"><div class="communitysite">자유게시판</div></a>
         </div>
       </div>
       <div class="communityfolder">
@@ -205,18 +184,12 @@
         <div
           class={`communitysite_folder ${gradepage === 1 ? "communitysite_folder_open" : ""}`}
         >
-          <a href="/com_school?par_grade={data.user[0].grade}&par_type=21"
-            ><div class="communitysite">학년 소식</div></a
-          >
-          <a href="/com_school?par_grade={data.user[0].grade}&par_type=22"
+          <a href="/com_school"><div class="communitysite">학년 소식</div></a>
+          <a href="/com_school"
             ><div class="communitysite">선생님의 공지</div></a
           >
-          <a href="/com_school?par_grade={data.user[0].grade}&par_type=23"
-            ><div class="communitysite">자유게시판</div></a
-          >
-          <a href="/com_school?par_grade={data.user[0].grade}&par_type=24"
-            ><div class="communitysite">학년 갤러리</div></a
-          >
+          <a href="/com_school"><div class="communitysite">자유게시판</div></a>
+          <a href="/com_school"><div class="communitysite">학년 갤러리</div></a>
         </div>
       </div>
       <div class="communityfolder">
@@ -228,26 +201,12 @@
         <div
           class={`communitysite_folder ${classpage === 1 ? "communitysite_folder_open" : ""}`}
         >
-          <a
-            href="/com_school?par_grade={data.user[0].grade}&par_class={data
-              .user[0].classNo}&par_type=31"
-            ><div class="communitysite">학급 소식</div></a
-          >
-          <a
-            href="/com_school?par_grade={data.user[0].grade}&par_class={data
-              .user[0].classNo}&par_type=32"
+          <a href="/com_school"><div class="communitysite">학급 소식</div></a>
+          <a href="/com_school"
             ><div class="communitysite">담임쌤의 공지</div></a
           >
-          <a
-            href="/com_school?par_grade={data.user[0].grade}&par_class={data
-              .user[0].classNo}&par_type=33"
-            ><div class="communitysite">자유게시판</div></a
-          >
-          <a
-            href="/com_school?par_grade={data.user[0].grade}&par_class={data
-              .user[0].classNo}&par_type=34"
-            ><div class="communitysite">학급 갤러리</div></a
-          >
+          <a href="/com_school"><div class="communitysite">자유게시판</div></a>
+          <a href="/com_school"><div class="communitysite">학급 갤러리</div></a>
         </div>
       </div>
       <div style="height:30px; width:100%"></div>

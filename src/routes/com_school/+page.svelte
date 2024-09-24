@@ -21,16 +21,6 @@
   import Nested1 from "../write_page/Nested.svelte";
 
   export let data;
-
-  import { page } from "$app/stores";
-
-  let par_grade, par_class, par_type;
-  // export let par_type;
-
-  // 쿼리 파라미터 값 추출
-  $: par_grade = $page.url.searchParams.get("par_grade") || "0";
-  $: par_class = $page.url.searchParams.get("par_class") || "0";
-  $: par_type = $page.url.searchParams.get("par_type") || "00";
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -51,45 +41,38 @@
     <div class="community_writes_row"></div>
     <div class="community_writes_row1">
       {#each data.write as i, j}
-        {#if data.write[j].written_type == par_type}
-          <!-- 각 글에 대해 고유한 j 값을 가진 div -->
-          <!-- svelte-ignore a11y-click-events-have-key-events -->
-          <div class="writing" on:click={() => on_write(j)}>
-            <div class="writing_top">
-              <div class="writing_title">{data.write[j].title}</div>
-              <div class="writing_writer">{data.write[j].writer}</div>
-            </div>
-            <div class="writing_mid">{data.write[j].writing}</div>
-            <div class="writing_bottom">
-              <div style="flex-grow:1;display:flex; flex-direction:row">
-                <div class="writing_good writing_goodbad">
-                  <img width="30px" src="/good_on.png" alt="" />
-                  <div style="color:white; font-weight:bold">
-                    {data.write[j].like}
-                  </div>
-                </div>
-                <div class="writing_bad writing_goodbad">
-                  <img width="30px" src="/bad_on.png" alt="" />
-                  <div style="color:white; font-weight:bold">
-                    {data.write[j].hate}
-                  </div>
+        <!-- 각 글에 대해 고유한 j 값을 가진 div -->
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div class="writing" on:click={() => on_write(j)}>
+          <div class="writing_top">
+            <div class="writing_title">{data.write[j].title}</div>
+            <div class="writing_writer">{data.write[j].writer}</div>
+          </div>
+          <div class="writing_mid">{data.write[j].writing}</div>
+          <div class="writing_bottom">
+            <div style="flex-grow:1;display:flex; flex-direction:row">
+              <div class="writing_good writing_goodbad">
+                <img width="30px" src="/good_on.png" alt="" />
+                <div style="color:white; font-weight:bold">
+                  {data.write[j].like}
                 </div>
               </div>
-              <div class="writing_more_watch">더보기...</div>
+              <div class="writing_bad writing_goodbad">
+                <img width="30px" src="/bad_on.png" alt="" />
+                <div style="color:white; font-weight:bold">
+                  {data.write[j].hate}
+                </div>
+              </div>
             </div>
+            <div class="writing_more_watch">더보기...</div>
           </div>
+        </div>
 
-          <!-- 클릭된 항목만 Nested 컴포넌트로 렌더링 -->
-          {#if currentJ === j}
-            <Nested {data} {j} />
-          {/if}
+        <!-- 클릭된 항목만 Nested 컴포넌트로 렌더링 -->
+        {#if currentJ === j}
+          <Nested {data} {j} />
         {/if}
       {/each}
-
-      <!-- <h1>현재 숫자: {n</h1> -->
-      <!-- <h2>사용자 이름: {name}</h2> -->
-
-      <!-- <h1>{par_grade}{par_class}{par_type}</h1> -->
     </div>
   </div>
 </div>
@@ -103,7 +86,7 @@
   <div class="write_div">글 쓰기</div>
 </div>
 
-<Nested1 {par_type} />
+<Nested1 />
 
 <style>
   .write {

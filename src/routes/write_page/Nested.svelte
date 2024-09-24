@@ -1,6 +1,6 @@
 <script>
   import { writetoggle } from "../store/store";
-  export let par_type;
+
   let write_1 = 0;
   writetoggle.subscribe((value) => {
     write_1 = value;
@@ -8,7 +8,6 @@
 
   let writeoff = () => {
     writetoggle.set(0);
-    // console.log(par_type);
   };
   let taggout = 0;
   let taggout_toggle = () => {
@@ -59,7 +58,6 @@
     const formData = {
       title,
       writing,
-      par_type,
     };
 
     try {
