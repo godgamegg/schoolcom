@@ -50,14 +50,18 @@
     "이벤트",
   ];
 
+  export let par_type;
+  console.log(par_type);
   let title = "";
   let writing = "";
+  let written_type = par_type;
 
   // "확인" 버튼 클릭 시 데이터를 서버로 전송하는 함수
   const submitData = async () => {
     const formData = {
       title,
       writing,
+      written_type,
     };
 
     try {
