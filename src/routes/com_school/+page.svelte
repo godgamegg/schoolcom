@@ -39,15 +39,12 @@
         <!-- {par/_type} -->
       </div>
     </div>
-    <div class="community_name">
-      <div class="community_name1"><div>인기글</div></div>
-    </div>
+
     <div class="community_name11">
       <div class="community_name12"><div>모든 글</div></div>
     </div>
   </div>
   <div class="community_writes_container">
-    <div class="community_writes_row"></div>
     <div class="community_writes_row"></div>
     <div class="community_writes_row1">
       {#each data.write as i, j}
@@ -158,7 +155,7 @@
     justify-content: center;
   }
   .community_name11 {
-    width: 60%;
+    width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -188,7 +185,7 @@
     flex-direction: column;
   }
   .community_writes_row1 {
-    width: 60%;
+    width: 80%;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
