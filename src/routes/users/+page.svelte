@@ -77,7 +77,7 @@
                   <img class="user_profil_img" src="/profil.png" alt="" />
                 </div>
                 <div class="user_profil1">
-                  <div class="user_name">{j}</div>
+                  <div class="user_name">{data.user1[j].username}</div>
                   <div class="user_position">
                     {data.user1[j].teacher_position}
                   </div>
@@ -106,7 +106,7 @@
                   <img class="user_profil_img" src="/profil.png" alt="" />
                 </div>
                 <div class="user_profil1">
-                  <div class="user_name">{j}</div>
+                  <div class="user_name">{data.user1[j].username}</div>
                   <div class="user_position">
                     {data.user1[j].teacher_position}
                   </div>
@@ -140,7 +140,7 @@
                   <img class="user_profil_img" src="/profil.png" alt="" />
                 </div>
                 <div class="user_profil1">
-                  <div class="user_name">{j}</div>
+                  <div class="user_name">{data.user1[j].username}</div>
                   <div class="user_position">
                     {data.user1[j].teacher_position}
                   </div>
@@ -169,7 +169,7 @@
                   <img class="user_profil_img" src="/profil.png" alt="" />
                 </div>
                 <div class="user_profil1">
-                  <div class="user_name">{j}</div>
+                  <div class="user_name">{data.user1[j].username}</div>
                   <div class="user_position">
                     {data.user1[j].teacher_position}
                   </div>
@@ -205,7 +205,7 @@
                   <img class="user_profil_img" src="/profil.png" alt="" />
                 </div>
                 <div class="user_profil1">
-                  <div class="user_name">{j}</div>
+                  <div class="user_name">{data.user1[j].username}</div>
                   <div class="user_position">
                     {data.user1[j].teacher_position}
                   </div>
@@ -234,7 +234,7 @@
                   <img class="user_profil_img" src="/profil.png" alt="" />
                 </div>
                 <div class="user_profil1">
-                  <div class="user_name">{j}</div>
+                  <div class="user_name">{data.user1[j].username}</div>
                   <div class="user_position">
                     {data.user1[j].teacher_position}
                   </div>
