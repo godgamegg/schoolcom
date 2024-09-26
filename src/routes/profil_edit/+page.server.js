@@ -23,17 +23,17 @@ export const load = async (event) => {
   const coll = db.collection("users");
 
   // 컬렉션에서 데이터를 조회하고 _id를 문자열로 변환
-  const user = await coll.find({email:usergmail1}).toArray();
+  const user1 = await coll.find({email:usergmail1}).toArray();
 
   // _id를 문자열로 변환
-  const serializeduser = user.map(users => ({
+  const serializeduser = user1.map(users => ({
     ...users,
     _id: users._id.toString()
   }));
 // console.log(user)
   return {
     session,
-    user: serializeduser // 직렬화 가능한 데이터를 반환
+    user1: serializeduser // 직렬화 가능한 데이터를 반환
   };
 };
     

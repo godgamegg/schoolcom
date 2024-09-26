@@ -11,23 +11,23 @@
   let teacher_secret = "";
   let teacher_secret1 = "";
 
-  let nowmessage = data.user[0].nowmessage;
-  let mymessage1 = data.user[0].mymessage1;
-  let mymessage2 = data.user[0].mymessage2;
-  let mymessage3 = data.user[0].mymessage3;
-  let mymessage4 = data.user[0].mymessage4;
-  let mymessage5 = data.user[0].mymessage5;
-  let mymessage6 = data.user[0].mymessage6;
-  let mymessage7 = data.user[0].mymessage7;
-  let nowlocation = data.user[0].nowlocation;
-  let birth = data.user[0].birth;
+  let nowmessage = data.user1[0].nowmessage;
+  let mymessage1 = data.user1[0].mymessage1;
+  let mymessage2 = data.user1[0].mymessage2;
+  let mymessage3 = data.user1[0].mymessage3;
+  let mymessage4 = data.user1[0].mymessage4;
+  let mymessage5 = data.user1[0].mymessage5;
+  let mymessage6 = data.user1[0].mymessage6;
+  let mymessage7 = data.user1[0].mymessage7;
+  let nowlocation = data.user1[0].nowlocation;
+  let birth = data.user1[0].birth;
   // let birth_lock = false;
-  let grade = data.user[0].grade;
-  let num = data.user[0].num;
-  let classNo = data.user[0].classNo;
-  let position = data.user[0].position;
-  let teacher_position = data.user[0].teacher_position;
-  let username = data.user[0].username;
+  let grade = data.user1[0].grade;
+  let num = data.user1[0].num;
+  let classNo = data.user1[0].classNo;
+  let position = data.user1[0].position;
+  let teacher_position = data.user1[0].teacher_position;
+  let username = data.user1[0].username;
 
   // "확인" 버튼 클릭 시 데이터를 서버로 전송하는 함수
   const submitData = async () => {
@@ -66,6 +66,8 @@
       console.error("Error updating user data:", error);
     }
   };
+
+  let currentJ = 0;
 </script>
 
 <div class="edituser_container">
@@ -216,7 +218,9 @@
 
     <!-- 학년 반 수정 -->
     <div class="edituser">
-      <div class="edituser_title">학년 반 수정하기</div>
+      <div class="edituser_title">
+        학년 반 수정하기 (선생님일 시 담당 학년,반)
+      </div>
       <!-- svelte-ignore a11y-no-static-element-interactions -->
       <div class="edituser_row">
         <input class="edituser_input1" type="number" bind:value={grade} />
@@ -287,7 +291,7 @@
 
   <!--  -->
 </div>
-<Nested />
+<Nested {data} {currentJ} />
 
 <style>
   .edituser_container {

@@ -13,6 +13,16 @@
   let chatting_on = () => {
     chatting_toggle.set(1);
   };
+
+  export let data;
+  export let currentJ;
+
+  let date = new Date();
+
+  let date1 = new Date(data.user1[currentJ].birth);
+  // let age = data.user1[currentJ].birth.getFullYear() - date.getFullYear();
+  // console.log("type:", typeof date);
+  // console.log("typ1", date1.getFullYear());
 </script>
 
 {#if user_inform_toggle1 == 1}
@@ -22,18 +32,25 @@
         <img class="userinform_img1" src="/profil.png" alt="" />
       </div>
       <div>
-        <div class="userinform_name">장준혁</div>
-        <div class="userinform_position">학생</div>
+        <div class="userinform_name">{data.user1[currentJ].username}</div>
+        <div class="userinform_position">{data.user1[currentJ].position}</div>
       </div>
 
-      <div class="userinform_detail">그냥 학생</div>
-      <div class="userinform_detail">최종학력 초졸</div>
+      <div class="userinform_detail">{data.user1[currentJ].mymessage1}</div>
+      <div class="userinform_detail">{data.user1[currentJ].mymessage2}</div>
+      <div class="userinform_detail">{data.user1[currentJ].mymessage3}</div>
+      <div class="userinform_detail">{data.user1[currentJ].mymessage4}</div>
+      <div class="userinform_detail">{data.user1[currentJ].mymessage5}</div>
+      <div class="userinform_detail">{data.user1[currentJ].mymessage6}</div>
+      <div class="userinform_detail">{data.user1[currentJ].mymessage7}</div>
     </div>
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <div class="userinform_right">
       <!-- svelte-ignore a11y-no-static-element-interactions -->
       <div>
-        <div class="userinform_age">나이 : 0.1살</div>
+        <div class="userinform_age">
+          나이 : {date.getFullYear() - date1.getFullYear()}살
+        </div>
         <div class="userinform_birth">생일 : 2월2일</div>
         <!-- svelte-ignore missing-declaration -->
         <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -42,13 +59,16 @@
         </div>
       </div>
 
-      <div class="userinform_nowlocation">현재 위치 : 2층 교무실</div>
-      <div class="userinform_nowlocation">소속 반 : 3학년 2반</div>
-      <div class="userinform_samecommunity">
-        같이 있는 커뮤니티 : 학교, 학년, 학급
+      <div class="userinform_nowlocation">
+        현재 위치 : {data.user1[currentJ].nowlocation}
       </div>
+      <div class="userinform_nowlocation">
+        학년 반 번호 : {data.user1[currentJ].grade}학년 {data.user1[currentJ]
+          .classNo}반 {data.user1[currentJ].num}번
+      </div>
+
       <div class="userinform_nowmessage">
-        상태메시지 : 공부 하기 싫어 빼애애액
+        상태메시지 : {data.user1[currentJ].nowmessage}
       </div>
 
       <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -112,10 +132,10 @@
     font-weight: bold;
     margin-left: 60px;
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
   .userinform_detail {
-    font-size: 20px;
+    font-size: 17px;
     font-weight: bold;
     margin-left: 60px;
     margin-top: 10px;

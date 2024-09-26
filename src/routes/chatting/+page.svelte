@@ -1,6 +1,7 @@
 <script>
   // import Nested from "../chatting_window/Nested.svelte";
   import Nested from "../user_inform/Nested.svelte";
+  import Nested1 from "../api/chat/[roomId]/+page.svelte";
 
   import { user_inform_toggle } from "../store/store";
   let user_inform_toggle_on1 = () => {
@@ -53,6 +54,8 @@
 
 <!-- <Nested /> -->
 <Nested />
+
+<Nested1 />
 
 <style>
   .user_window {

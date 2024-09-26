@@ -1,10 +1,14 @@
 <script>
   import Nested from "../user_inform/Nested.svelte";
   import { user_inform_toggle } from "../store/store";
+  let currentJ = 0;
   let user_inform_toggle_on = () => {
     user_inform_toggle.set(1);
     console.log(1);
+    currentJ = j;
   };
+  export let data;
+  export let j;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -14,13 +18,15 @@
     <img class="user_profil_img" src="/profil.png" alt="" />
   </div>
   <div class="user_profil1">
-    <div class="user_name">홍길동</div>
-    <div class="user_position">음악 선생님</div>
+    <div class="user_name">{j}</div>
+    <div class="user_position">{data.user1[j].teacher_position}</div>
     <div class="user_more_inform"><div>정보 보기</div></div>
   </div>
 </div>
 
-<Nested />
+{#if currentJ === j}
+  <Nested {data} {currentJ} />
+{/if}
 
 <style>
   .user_information {
