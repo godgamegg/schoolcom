@@ -4,10 +4,7 @@
 // import { NODE_ENV } from '$env/static/private';
 // import { usergmail } from './store/store.js';
 
-// let usergmail1="";
-// usergmail.subscribe((value) => {
-//     usergmail1 = value;
-//   });
+
 // // console.log(usergmail1)  
 
 
@@ -20,21 +17,20 @@
 
 //   const client = await clientPromise;
 //   const db = client.db(NODE_ENV);
-//   const coll = db.collection("users");
+//   const coll = db.collection("writes");
 
 //   // 컬렉션에서 데이터를 조회하고 _id를 문자열로 변환
-//   const user = await coll.find({email:usergmail1}).toArray();
+//   const write = await coll.find({}).toArray();
 
 //   // _id를 문자열로 변환
-//   const serializeduser = user.map(users => ({
-//     ...users,
-//     _id: users._id.toString()
+//   const serializedwrite = write.map(writes => ({
+//     ...writes,
+//     _id: writes._id.toString()
 //   }));
-// // console.log(user)
+
 //   return {
 //     session,
-//     user: serializeduser // 직렬화 가능한 데이터를 반환
+//     write: serializedwrite // 직렬화 가능한 데이터를 반환
 //   };
 // };
     
-// // 
