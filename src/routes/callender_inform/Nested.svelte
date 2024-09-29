@@ -21,7 +21,7 @@
   import { writing_comment_toggle } from "../store/store";
   let cal_comment_on = () => {
     writing_comment_toggle.set(1);
-    console.log(1);
+    // console.log(1);
   };
 </script>
 

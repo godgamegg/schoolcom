@@ -5,7 +5,7 @@
   let see_comment = () => {
     comment2_toggle += 1;
     comment2_toggle %= 2;
-    console.log(comment2_toggle);
+    // console.log(comment2_toggle);
   };
 </script>
 

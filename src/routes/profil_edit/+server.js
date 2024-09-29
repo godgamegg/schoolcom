@@ -10,7 +10,7 @@ export async function POST({ request }) {
   usergmail.subscribe((value) => {
       usergmail1 = value;
     });
-  console.log(usergmail1)  
+  console.log(12313123, usergmail1)  
   
   const data = await request.json();
 

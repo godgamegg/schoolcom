@@ -47,7 +47,7 @@
   import { callender_inform_toggle } from "../store/store";
   let schoolinform_toggle = () => {
     callender_inform_toggle.set(1);
-    console.log(1);
+    // console.log(1);
   };
 
   import { callender_inform_type } from "../store/store";

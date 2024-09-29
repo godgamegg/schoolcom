@@ -4,7 +4,7 @@
   let currentJ = 0;
   let user_inform_toggle_on = () => {
     user_inform_toggle.set(1);
-    console.log(1);
+    // console.log(1);
     currentJ = j;
   };
   export let data;

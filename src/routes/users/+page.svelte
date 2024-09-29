@@ -5,7 +5,7 @@
   let currentJ = 0;
   let user_inform_toggle_on = (j) => {
     user_inform_toggle.set(1);
-    console.log(1);
+    // console.log(1);
     currentJ = j;
   };
   let user_choice = 1;
@@ -24,7 +24,7 @@
   // export let data1;
   // console.log("data1", data.user, data.user1);
   // console.log("data1");
-  console.log(data.user1);
+  // console.log(data.user1);
 </script>
 
 <div class="user_window">

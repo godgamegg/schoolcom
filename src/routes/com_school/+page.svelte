@@ -13,7 +13,7 @@
 
   let on_write = (j) => {
     writing_more_toggle.set(1);
-    console.log(`Clicked on item with index ${j}`);
+    // console.log(`Clicked on item with index ${j}`);
     currentJ = j; // 클릭된 j 값 저장
   };
 
@@ -27,7 +27,7 @@
   // export let par_type;
   // 쿼리 파라미터 값 추출
   $: par_type = $page.url.searchParams.get("par_type") || "00";
-  console.log(par_type);
+  // console.log(par_type);
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->

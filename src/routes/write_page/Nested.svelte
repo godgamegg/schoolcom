@@ -51,7 +51,7 @@
   ];
 
   export let par_type;
-  console.log(par_type);
+  // console.log(par_type);
   let title = "";
   let writing = "";
   let written_type = par_type;
@@ -74,7 +74,7 @@
       });
 
       const result = await response.json();
-      console.log("Update result:", result);
+      // console.log("Update result:", result);
     } catch (error) {
       console.error("Error updating user data:", error);
     }

@@ -34,13 +34,13 @@
 
   let alarm_on = () => {
     alarm_toggle.set(1);
-    console.log(1);
+    // console.log(1);
   };
 
   // import { logined } from "./store/store";
   let logout = () => {
     logined.set(0);
-    console.log(1);
+    // console.log(1);
   };
 
   // export let data;

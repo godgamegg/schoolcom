@@ -14,7 +14,7 @@
 
   let comment_on = () => {
     writing_comment_toggle.set(1);
-    console.log(1);
+    // console.log(1);
   };
 
   export let j;

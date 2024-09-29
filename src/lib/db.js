@@ -11,7 +11,7 @@ let usergmail1="";
 usergmail.subscribe((value) => {
     usergmail1 = value;
   });
-console.log(usergmail1)  
+// console.log(usergmail1)  
 
 
 export async function getUserByEmail(email) {

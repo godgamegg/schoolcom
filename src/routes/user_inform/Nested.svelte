@@ -1,12 +1,29 @@
 <script>
   // @ts-nocheck
+  import { onMount } from "svelte";
 
+  export let data;
+  export let currentJ;
   import Nested from "../chatting_window/Nested.svelte";
-  import { chatting_toggle, user_inform_toggle } from "../store/store";
+  import {
+    usergmail_page,
+    chatting_toggle,
+    user_inform_toggle,
+  } from "../store/store";
+  let usergmail_page1 = "";
+  // console.log(1);
+  usergmail_page.subscribe((value) => {
+    // console.log(123, value);
+    usergmail_page1 = value;
+    // console.log("gmail = ", value, "user = ", data.user1[currentJ].email);
+  });
+
   let user_inform_toggle1 = 0;
   user_inform_toggle.subscribe((value) => {
     user_inform_toggle1 = value;
   });
+
+  // console.log(1223213, data.user1[currentJ].email, usergmail_page1);
   let user_inform_toggle_off = () => {
     user_inform_toggle.set(0);
   };
@@ -14,15 +31,18 @@
     chatting_toggle.set(1);
   };
 
-  export let data;
-  export let currentJ;
-
   let date = new Date();
 
   let date1 = new Date(data.user1[currentJ].birth);
   // let age = data.user1[currentJ].birth.getFullYear() - date.getFullYear();
   // console.log("type:", typeof date);
   // console.log("typ1", date1.getFullYear());
+
+  import { goto } from "$app/navigation";
+
+  function goToChat() {
+    goto(`/chat/${data.user1[currentJ].email}`);
+  }
 </script>
 
 {#if user_inform_toggle1 == 1}
@@ -45,6 +65,7 @@
       <div class="userinform_detail">{data.user1[currentJ].mymessage7}</div>
     </div>
     <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div class="userinform_right">
       <!-- svelte-ignore a11y-no-static-element-interactions -->
       <div>
@@ -71,10 +92,16 @@
         상태메시지 : {data.user1[currentJ].nowmessage}
       </div>
 
+      <!-- svelte-ignore missing-declaration -->
+      <!-- <div on:click={ssssss}>cfygvuhbijnokm</div> -->
+
       <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <div class="userinform_chatting" on:click={chatting_on}>
-        <img src="/chatting.png" alt="" />1대1 채팅하기
-      </div>
+
+      {#if data.user1[currentJ].email != usergmail_page1}
+        <div class="userinform_chatting" on:click={goToChat}>
+          <img src="/chatting.png" alt="" />1대1 채팅하기
+        </div>
+      {/if}
     </div>
   </div>
   <Nested />

@@ -3,7 +3,8 @@ import { writable } from 'svelte/store';
 import { isExportDeclaration } from 'typescript';
 
 // 초기 값은 0
-
+export const usergmail = writable("");
+export const usergmail_page = writable("");
 //community
 
 export const writetoggle = writable(0);
@@ -45,4 +46,5 @@ export const writing_comment_toggle = writable(0);
 export const login_username = writable("");
 
 
-export const usergmail = writable("");
+
+// export const userid = writable("");

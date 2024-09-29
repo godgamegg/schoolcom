@@ -61,7 +61,7 @@
       });
 
       const result = await response.json();
-      console.log("Update result:", result);
+      // console.log("Update result:", result);
     } catch (error) {
       console.error("Error updating user data:", error);
     }
