@@ -5,7 +5,7 @@
   import Nested from "./alarm/Nested.svelte";
   import { alarm_toggle, logined } from "./store/store";
   const handleSignOut = () => {
-    location.replace("http://localhost:5173");
+    location.replace("http://localhost:5173/Login_page");
     signOut();
   };
 
@@ -254,6 +254,7 @@
     background-color: #4370a7;
     display: flex;
     justify-content: space-between;
+    /* overflow-y: his; */
   }
 
   .menu_1 {

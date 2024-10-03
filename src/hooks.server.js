@@ -8,7 +8,7 @@ export const { handle } = SvelteKitAuth({
  providers: [GoogleProvider({ clientId: GOOGLE_CLIENT_ID, clientSecret: GOOGLE_CLIENT_SECRET,allowDangerousEmailAccountLinking: true })],
  adapter: MongoDBAdapter(clientPromise, { databaseName: NODE_ENV }),
  pages: {
-    signIn: '/login',
-    signOut: '/login'
+    signIn: '/Login_page',
+    signOut: '/Login_page'
  }
 });

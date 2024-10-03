@@ -20,7 +20,7 @@
     scene4 = 1;
   }, 2900);
 
-  import { logined } from "./store/store";
+  import { logined } from "../store/store";
   let logined_1 = 0;
   logined.subscribe((value) => {
     logined_1 = value;
@@ -46,7 +46,7 @@
       <div class={`login_2 ${scene2 === 1 ? "login_2_go" : ""}`}>스쿨.com</div>
       <div style="height:50px"></div>
       <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <a href="/protected"
+      <a href="/login"
         ><div class={`login_3 ${scene3 === 1 ? "login_3_go" : ""}`}>
           <img src="/google.png" alt="" />
         </div>
@@ -88,17 +88,17 @@
     /* transform: scale(0); */
   }
   .login_0_go {
-    transform: translate(0px, 0px);
+    transform: translate(0px, -35px);
   }
   .login_1 {
     color: #bfc5ff;
     font-size: 50px;
     font-weight: bold;
-    transform: scale(0);
+    transform: scale(0) translate(0px, -35px);
     transition: all 0.5s;
   }
   .login_1_go {
-    transform: scale(1);
+    transform: scale(1) translate(0px, -35px);
   }
   .login_2 {
     color: #bfc5ff;
@@ -109,7 +109,7 @@
     transition: all 1s;
   }
   .login_2_go {
-    transform: translate(0px, 0px);
+    transform: translate(0px, -35px);
     /* transform: scale(1); */
   }
   .login_3 {
@@ -122,12 +122,12 @@
     height: 140px;
     background-color: #112d4e;
     transition: all 0.5s;
-    transform: scale(0);
+    transform: scale(0) translate(-15px, -15px);
   }
   .login_3_go {
     /* display: flex; */
 
-    transform: scale(1);
+    transform: scale(1) translate(0px, -10px);
   }
   .login_4 {
     margin-top: 20px;
@@ -138,6 +138,6 @@
     transform: translate(0px, 1500px);
   }
   .login_4_go {
-    transform: translate(0px, 0px);
+    transform: translate(0px, -10px);
   }
 </style>

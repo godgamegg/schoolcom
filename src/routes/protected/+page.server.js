@@ -4,7 +4,7 @@ export const load = async (event) => {
     const session = await event.locals.auth();
     usergmail.set(session.user.email);
     // userid.set(session.user._id);
-    console.log(1232313, session?.user?.email)
+    // console.log(1232313, session?.user?.email)
     return {
      session
     };

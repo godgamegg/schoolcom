@@ -3,7 +3,8 @@
 
   export let data;
   usergmail_page.set(data.session?.user?.email);
+  // console.log(data.session?.user?.email);
 </script>
 
-<h1>Protected</h1>
+<!-- <h1>Protected</h1> -->
 <!-- <a href="/"></a> -->

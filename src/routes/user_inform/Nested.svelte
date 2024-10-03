@@ -16,6 +16,7 @@
     // console.log(123, value);
     usergmail_page1 = value;
     // console.log("gmail = ", value, "user = ", data.user1[currentJ].email);
+    // console.log(123132, value);
   });
 
   let user_inform_toggle1 = 0;
@@ -37,11 +38,17 @@
   // let age = data.user1[currentJ].birth.getFullYear() - date.getFullYear();
   // console.log("type:", typeof date);
   // console.log("typ1", date1.getFullYear());
+  import { page } from "$app/stores";
+  let user_name;
+  // 반응형 선언: 페이지 URL이 바뀌면 number 값이 업데이트됨
+  $: user_name = $page.url.searchParams.get("user_name") || "0"; // 쿼리 파라미터가 없으면 기본값으로 '0'
 
   import { goto } from "$app/navigation";
 
   function goToChat() {
-    goto(`/chat/${data.user1[currentJ].email}`);
+    goto(
+      `/chat/${data.user1[currentJ].email}?user_name=${data.user1[currentJ].username}`
+    );
   }
 </script>
 
