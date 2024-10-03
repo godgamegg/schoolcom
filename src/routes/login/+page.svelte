@@ -54,7 +54,7 @@
   }, 4000);
   setTimeout(function () {
     scene6 = 1;
-  }, 4500);
+  }, 4000);
   setTimeout(() => {
     scene7 = 1;
   }, 4200);
