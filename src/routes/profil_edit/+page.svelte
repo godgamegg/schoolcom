@@ -32,7 +32,6 @@
   // "확인" 버튼 클릭 시 데이터를 서버로 전송하는 함수
   const submitData = async () => {
     const formData = {
-      nowmessage,
       mymessage1,
       mymessage2,
       mymessage3,
@@ -41,6 +40,7 @@
       mymessage6,
       mymessage7,
       nowlocation,
+      nowmessage,
       birth,
       // birth_lock,
       grade,

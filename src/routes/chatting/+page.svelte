@@ -8,6 +8,8 @@
     user_inform_toggle.set(1);
     // console.log(1);
   };
+  // export let data;
+  // console.log(data.user1[0].participants);
 </script>
 
 <div class="user_window">
