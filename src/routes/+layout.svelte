@@ -5,7 +5,7 @@
   import Nested from "./alarm/Nested.svelte";
   import { alarm_toggle, logined } from "./store/store";
   const handleSignOut = () => {
-    location.replace("http://localhost:5173/Login_page");
+    location.replace("http://localhost:5173/");
     signOut();
   };
 
