@@ -15,46 +15,12 @@
     taggout %= 2;
   };
 
-  let tag_plused = (i, j) => {};
-  let tag_subject = [
-    "📖국어",
-    "영어",
-    "📐수학",
-    "과학",
-    "기술 가정",
-    "정보",
-    "사회",
-    "역사",
-    "도덕",
-    "체육",
-    "음악",
-    "미술",
-    "한문",
-    "진로",
-    "환경",
-    "보건",
-    "생활외국어",
-    "스클",
-    "창체",
-  ];
-
-  let tag_import = ["필수", "매우 중요함", "중요함", "보통"];
-  let tag_type = [
-    "잡담",
-    "정보",
-    "공지",
-    "수행",
-    "지필",
-    "발표",
-    "준비물",
-    "이벤트",
-  ];
-
   export let par_type;
   // console.log(par_type);
   let title = "";
   let writing = "";
   let written_type = par_type;
+  let announce = false;
 
   // "확인" 버튼 클릭 시 데이터를 서버로 전송하는 함수
   const submitData = async () => {
@@ -62,6 +28,7 @@
       title,
       writing,
       written_type,
+      announce,
     };
 
     try {
@@ -113,31 +80,14 @@
       <!-- svelte-ignore a11y-no-static-element-interactions -->
       <div class="write_page_tag">
         <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div on:click={taggout_toggle} class="write_page_tag_plus">
-          <div>태그 추가(+)</div>
+        <div class="write_page_tag_plus">
+          <input
+            bind:checked={announce}
+            type="checkbox"
+            style="width:30px;height:30px"
+          />
+          공지
         </div>
-        {#if taggout == 1}
-          <div class="write_taggout">
-            <div class="tag_tag"><div>과목</div></div>
-            {#each tag_subject as tag_sub, i}
-              <!-- svelte-ignore missing-declaration -->
-              <!-- svelte-ignore a11y-click-events-have-key-events -->
-              <div class="write_tags" on:click={tag_plused(i)}>
-                <div>{tag_sub}</div>
-              </div>
-            {/each}
-
-            <div class="tag_tag"><div>중요도</div></div>
-            {#each tag_import as tag_im, i}
-              <div class="write_tags"><div>{tag_im}</div></div>
-            {/each}
-
-            <div class="tag_tag"><div>글 종류</div></div>
-            {#each tag_type as tag_ty, i}
-              <div class="write_tags"><div>{tag_ty}</div></div>
-            {/each}
-          </div>
-        {/if}
       </div>
       <div class="file-"></div>
       <!-- svelte-ignore a11y-click-events-have-key-events -->

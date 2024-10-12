@@ -45,10 +45,46 @@
     </div>
   </div>
   <div class="community_writes_container">
-    <div class="community_writes_row"></div>
+    <div class="community_writes_row">
+      {#each data.write as i, j}
+        {#if data.write[j].written_type == par_type && data.write[j].announce == true}
+          <!-- 각 글에 대해 고유한 j 값을 가진 div -->
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
+          <div class="writing" on:click={() => on_write(j)}>
+            <div class="writing_top">
+              <div class="writing_title">{data.write[j].title}</div>
+              <div class="writing_writer">{data.write[j].writer}</div>
+            </div>
+            <div class="writing_mid">{data.write[j].writing}</div>
+            <div class="writing_bottom">
+              <div style="flex-grow:1;display:flex; flex-direction:row">
+                <div class="writing_good writing_goodbad">
+                  <img width="30px" src="/good_on.png" alt="" />
+                  <div style="color:white; font-weight:bold">
+                    {data.write[j].like}
+                  </div>
+                </div>
+                <div class="writing_bad writing_goodbad">
+                  <img width="30px" src="/bad_on.png" alt="" />
+                  <div style="color:white; font-weight:bold">
+                    {data.write[j].hate}
+                  </div>
+                </div>
+              </div>
+              <div class="writing_more_watch">더보기...</div>
+            </div>
+          </div>
+
+          <!-- 클릭된 항목만 Nested 컴포넌트로 렌더링 -->
+          {#if currentJ === j}
+            <Nested {data} {j} />
+          {/if}
+        {/if}
+      {/each}
+    </div>
     <div class="community_writes_row1">
       {#each data.write as i, j}
-        {#if data.write[j].written_type == par_type}
+        {#if data.write[j].written_type == par_type && data.write[j].announce == false}
           <!-- 각 글에 대해 고유한 j 값을 가진 div -->
           <!-- svelte-ignore a11y-click-events-have-key-events -->
           <div class="writing" on:click={() => on_write(j)}>

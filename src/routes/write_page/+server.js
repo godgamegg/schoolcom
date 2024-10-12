@@ -31,7 +31,8 @@ export async function POST({ request }) {
             date : new Date(),
             written_page : "추가 예정",
             writer : user ? user.username : "No user found",
-            written_type : data1.written_type
+            written_type : data1.written_type,
+            announce : data1.announce
         }]  
     );
 
