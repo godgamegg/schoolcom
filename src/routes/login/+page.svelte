@@ -8,10 +8,6 @@
     signIn("google", { callbackUrl: "/protected" });
   };
 
-  const handleSignOut = () => {
-    signOut();
-  };
-
   let imgurl = "/google.png";
   let imgw = "110";
 

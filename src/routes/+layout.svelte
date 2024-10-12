@@ -102,13 +102,12 @@
         </div>
         <!-- svelte-ignore missing-declaration -->
         <!-- svelte-ignore a11y-no-static-element-interactions -->
-        <div class="button" on:click={alarm_on}>
+        <!-- <div class="button" on:click={alarm_on}>
           <div class="clickbutton">
             <span style="color:#EEE8F7; font-weight:bold; font-size:24px;"
               >알림</span
             ><img src="/alarm.png" alt="" />
           </div>
-          <!-- 그냥 창 하나 띄울꺼임 -->
         </div>
         <div class="button">
           <a href="/chatting">
@@ -118,7 +117,7 @@
               ><img src="/chatting.png" alt="" />
             </div>
           </a>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

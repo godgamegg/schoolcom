@@ -15,7 +15,7 @@ console.log(usergmail1)
 export const load = async (event) => {
   const session = await event.locals.auth();
   if (!session) {
-    redirect(307, 'auth/signin');
+    redirect(307, 'auth/');
   }
 
   const client = await clientPromise;
