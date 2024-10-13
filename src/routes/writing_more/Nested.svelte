@@ -29,6 +29,11 @@
         <div class="writing_more_page_title">
           <div>{data.write[j].title}</div>
         </div>
+        <div
+          style="color:white; font-size:20px; font-weight:bold; margin-right:40px"
+        >
+          {data.write[j].writer} 작성
+        </div>
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <img
           on:click={writing_more_off}
@@ -47,16 +52,16 @@
             style="margin-right:20px"
             class="writing_more_good writing_more_goodbad"
           >
-            <img width="50px" src="/good_on.png" alt="" />
+            <!-- <img width="50px" src="/good_on.png" alt="" />
             <div style="color:white; font-weight:bold; font-size:25px">
               {data.write[j].like}
-            </div>
+            </div> -->
           </div>
           <div class="writing_more_bad writing_more_goodbad">
-            <img width="50px" src="/bad_on.png" alt="" />
+            <!-- <img width="50px" src="/bad_on.png" alt="" />
             <div style="color:white; font-weight:bold; font-size:25px">
               {data.write[j].hate}
-            </div>
+            </div> -->
           </div>
         </div>
         <!-- svelte-ignore a11y-click-events-have-key-events -->

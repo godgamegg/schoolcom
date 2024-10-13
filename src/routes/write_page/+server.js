@@ -21,7 +21,9 @@ export async function POST({ request }) {
             date : new Date(),
             writer : user ? user.username : "No user found",
             written_type : data1.written_type,
-            announce : data1.announce
+            announce : data1.announce,
+            writer_class : user?user.classNo: "No user found",
+            writer_grade : user?user.grade: "No user found"
     }]);
     return new Response(JSON.stringify({ success: true, result }), { status: 200 });
   } catch (error) {return new Response(JSON.stringify({ success: false, error }), { status: 500 });}

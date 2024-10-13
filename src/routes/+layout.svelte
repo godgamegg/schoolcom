@@ -11,7 +11,7 @@
 
   // export let data;
   // import { page } from "$app/stores";
-  let menu_toggle = 1;
+  let menu_toggle = 0;
   let menutoggle = () => {
     menu_toggle += 1;
     menu_toggle %= 2;
@@ -73,12 +73,12 @@
             <img src="/search_button.png" alt="" />
           </div>
         </div>
-        <div class="search_2 search">
+        <!-- <div class="search_2 search">
           <div class="search_space"></div>
           <div class="search_button">
             <img src="/search_button.png" alt="" />
           </div>
-        </div>
+        </div> -->
       </div>
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <div class="button_box">
@@ -96,7 +96,6 @@
             <div class="clickbutton">
               <!-- <span style="color:#EEE8F7; font-weight:bold; font-size:24px;"
                 >유저</span> -->
-
               <img width="200px" src="/button_png.png" alt="" />
             </div>
           </a>
