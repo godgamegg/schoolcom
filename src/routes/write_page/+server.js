@@ -7,41 +7,23 @@ export async function POST({ request }) {
   const db = client.db(NODE_ENV);
   const coll = db.collection("writes");
 
-
   const data1 = await request.json();
 
   let usergmail1="";
-  usergmail.subscribe((value) => {
-      usergmail1 = value;
-    });
-  // console.log(usergmail1)  
-  
+  usergmail.subscribe((value) => {usergmail1 = value;});
 
   let user;
   try {
-
     user = await db.collection("users").findOne({email:usergmail1});
-    const result = await coll.insertMany(
-     [{
+    const result = await coll.insertMany([{
             title : data1.title,
             writing : data1.writing,
-            comments : "",
-            like : 0,
-            hate : 0,
             date : new Date(),
-            written_page : "추가 예정",
             writer : user ? user.username : "No user found",
             written_type : data1.written_type,
             announce : data1.announce
-        }]  
-    );
-
+    }]);
     return new Response(JSON.stringify({ success: true, result }), { status: 200 });
-    
-  } catch (error) {
-    return new Response(JSON.stringify({ success: false, error }), { status: 500 });
-  }
-  
- 
+  } catch (error) {return new Response(JSON.stringify({ success: false, error }), { status: 500 });}
 }
 

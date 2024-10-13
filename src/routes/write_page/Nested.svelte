@@ -16,21 +16,19 @@
   };
 
   export let par_type;
-  // console.log(par_type);
   let title = "";
   let writing = "";
   let written_type = par_type;
   let announce = false;
 
-  // "확인" 버튼 클릭 시 데이터를 서버로 전송하는 함수
   const submitData = async () => {
+    written_type = par_type;
     const formData = {
       title,
       writing,
       written_type,
       announce,
     };
-
     try {
       const response = await fetch("/write_page", {
         method: "POST",
@@ -39,11 +37,9 @@
         },
         body: JSON.stringify(formData),
       });
-
       const result = await response.json();
-      // console.log("Update result:", result);
     } catch (error) {
-      console.error("Error updating user data:", error);
+      console.error("error:", error);
     }
     writetoggle.set(0);
     title = "";

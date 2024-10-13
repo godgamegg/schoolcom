@@ -82,7 +82,7 @@
       </div>
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <div class="button_box">
-        <div class="button">
+        <!-- <div class="button">
           <a href="/callender"
             ><div class="clickbutton">
               <span style="color:#EEE8F7; font-weight:bold; font-size:24px;"
@@ -90,16 +90,18 @@
               ><img src="/callender.png" alt="" />
             </div></a
           >
-        </div>
+        </div> -->
         <div class="button">
           <a href="/users">
             <div class="clickbutton">
-              <span style="color:#EEE8F7; font-weight:bold; font-size:24px;"
-                >참가<br />인원</span
-              ><img src="/users.png" alt="" />
+              <!-- <span style="color:#EEE8F7; font-weight:bold; font-size:24px;"
+                >유저</span> -->
+
+              <img width="200px" src="/button_png.png" alt="" />
             </div>
           </a>
         </div>
+
         <!-- svelte-ignore missing-declaration -->
         <!-- svelte-ignore a11y-no-static-element-interactions -->
         <!-- <div class="button" on:click={alarm_on}>
@@ -309,6 +311,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
   }
 
   .button {
@@ -335,11 +338,11 @@
   }
 
   .clickbutton {
-    width: 100px;
-    height: 70px;
+    width: 200px;
+    height: 140px;
     background-color: #112d4e;
     border-radius: 9px;
-    border: 3px solid #7a82c3;
+    border: 5px solid #7a82c3;
     display: flex;
     justify-content: center;
     align-items: center;
