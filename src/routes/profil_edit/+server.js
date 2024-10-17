@@ -5,15 +5,11 @@ export async function POST({ request }) {
   const client = await clientPromise;
   const db = client.db(NODE_ENV);
   const coll = db.collection("users");
-
   let usergmail1="";
   usergmail.subscribe((value) => {
       usergmail1 = value;
     });
-  console.log(12313123, usergmail1)  
-  
   const data = await request.json();
-
   try {
 
     const result = await coll.updateOne(

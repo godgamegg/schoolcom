@@ -29,10 +29,28 @@
   $: par_type = $page.url.searchParams.get("par_type") || "00";
   // console.log(par_type);
   // console.log(data.user[0]);
+  let search = "";
+
+  // let number12;
+  // while (true) {
+  //   number12 += 1;
+  // }
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="community_container">
+  <div class="search_container">
+    <div class="search_box">
+      <div class="search_1 search">
+        <div class="search_button">
+          <img src="/search_button.png" alt="" />
+          <div class="search_div"><div>검색</div></div>
+        </div>
+        <input class="search_space" type="text" bind:value={search} />
+      </div>
+    </div>
+  </div>
+
   <div class="community_name_line">
     <div class="community_name">
       <div class="community_name1">
@@ -48,37 +66,10 @@
   <div class="community_writes_container">
     <div class="community_writes_row">
       {#each data.write as i, j}
-        {#if data.write[j].written_type == par_type && data.write[j].announce == true}
-          {#if Math.floor(Number(par_type) / 10) == 1}
-            <!-- 각 글에 대해 고유한 j 값을 가진 div -->
-            <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <div class="writing" on:click={() => on_write(j)}>
-              <div class="writing_top">
-                <div class="writing_title">{data.write[j].title}</div>
-                <div class="writing_writer">{data.write[j].writer}</div>
-              </div>
-              <div class="writing_mid">{data.write[j].writing}</div>
-              <div class="writing_bottom">
-                <div style="flex-grow:1;display:flex; flex-direction:row">
-                  <div class="writing_good writing_goodbad">
-                    <!-- <img width="30px" src="/good_on.png" alt="" />
-                  <div style="color:white; font-weight:bold">
-                    {data.write[j].like}
-                  </div> -->
-                  </div>
-                  <div class="writing_bad writing_goodbad">
-                    <!-- <img width="30px" src="/bad_on.png" alt="" />
-                  <div style="color:white; font-weight:bold">
-                    {data.write[j].hate}
-                  </div> -->
-                  </div>
-                </div>
-                <div class="writing_more_watch">더보기...</div>
-              </div>
-            </div>
-          {/if}
-          {#if Math.floor(Number(par_type) / 10) == 2}
-            {#if data.user[0].grade == data.write[j].writer_grade}
+        <!-- <div style="font-size: 0;">{number12}</div> -->
+        {#if data.write[j].title.indexOf(search) != -1 || data.write[j].writer.indexOf(search) != -1 || data.write[j].writing.indexOf(search) != -1}
+          {#if data.write[j].written_type == par_type && data.write[j].announce == true}
+            {#if Math.floor(Number(par_type) / 10) == 1}
               <!-- 각 글에 대해 고유한 j 값을 가진 div -->
               <!-- svelte-ignore a11y-click-events-have-key-events -->
               <div class="writing" on:click={() => on_write(j)}>
@@ -106,138 +97,170 @@
                 </div>
               </div>
             {/if}
-          {/if}
-          {#if Math.floor(Number(par_type) / 10) == 3}
-            {#if data.user[0].grade == data.write[j].writer_grade && data.user[0].classNo == data.write[j].writer_class}
-              <!-- 각 글에 대해 고유한 j 값을 가진 div -->
-              <!-- svelte-ignore a11y-click-events-have-key-events -->
-              <div class="writing" on:click={() => on_write(j)}>
-                <div class="writing_top">
-                  <div class="writing_title">{data.write[j].title}</div>
-                  <div class="writing_writer">{data.write[j].writer}</div>
-                </div>
-                <div class="writing_mid">{data.write[j].writing}</div>
-                <div class="writing_bottom">
-                  <div style="flex-grow:1;display:flex; flex-direction:row">
-                    <div class="writing_good writing_goodbad">
-                      <!-- <img width="30px" src="/good_on.png" alt="" />
-                <div style="color:white; font-weight:bold">
-                  {data.write[j].like}
-                </div> -->
-                    </div>
-                    <div class="writing_bad writing_goodbad">
-                      <!-- <img width="30px" src="/bad_on.png" alt="" />
-                <div style="color:white; font-weight:bold">
-                  {data.write[j].hate}
-                </div> -->
-                    </div>
+            {#if Math.floor(Number(par_type) / 10) == 2}
+              {#if data.user[0].grade == data.write[j].writer_grade}
+                <!-- 각 글에 대해 고유한 j 값을 가진 div -->
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <div class="writing" on:click={() => on_write(j)}>
+                  <div class="writing_top">
+                    <div class="writing_title">{data.write[j].title}</div>
+                    <div class="writing_writer">{data.write[j].writer}</div>
                   </div>
-                  <div class="writing_more_watch">더보기...</div>
+                  <div class="writing_mid">{data.write[j].writing}</div>
+                  <div class="writing_bottom">
+                    <div style="flex-grow:1;display:flex; flex-direction:row">
+                      <div class="writing_good writing_goodbad">
+                        <!-- <img width="30px" src="/good_on.png" alt="" />
+              <div style="color:white; font-weight:bold">
+                {data.write[j].like}
+              </div> -->
+                      </div>
+                      <div class="writing_bad writing_goodbad">
+                        <!-- <img width="30px" src="/bad_on.png" alt="" />
+              <div style="color:white; font-weight:bold">
+                {data.write[j].hate}
+              </div> -->
+                      </div>
+                    </div>
+                    <div class="writing_more_watch">더보기...</div>
+                  </div>
                 </div>
-              </div>
+              {/if}
             {/if}
-          {/if}
-          <!-- 클릭된 항목만 Nested 컴포넌트로 렌더링 -->
-          {#if currentJ === j}
-            <Nested {data} {j} />
+            {#if Math.floor(Number(par_type) / 10) == 3}
+              {#if data.user[0].grade == data.write[j].writer_grade && data.user[0].classNo == data.write[j].writer_class}
+                <!-- 각 글에 대해 고유한 j 값을 가진 div -->
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <div class="writing" on:click={() => on_write(j)}>
+                  <div class="writing_top">
+                    <div class="writing_title">{data.write[j].title}</div>
+                    <div class="writing_writer">{data.write[j].writer}</div>
+                  </div>
+                  <div class="writing_mid">{data.write[j].writing}</div>
+                  <div class="writing_bottom">
+                    <div style="flex-grow:1;display:flex; flex-direction:row">
+                      <div class="writing_good writing_goodbad">
+                        <!-- <img width="30px" src="/good_on.png" alt="" />
+              <div style="color:white; font-weight:bold">
+                {data.write[j].like}
+              </div> -->
+                      </div>
+                      <div class="writing_bad writing_goodbad">
+                        <!-- <img width="30px" src="/bad_on.png" alt="" />
+              <div style="color:white; font-weight:bold">
+                {data.write[j].hate}
+              </div> -->
+                      </div>
+                    </div>
+                    <div class="writing_more_watch">더보기...</div>
+                  </div>
+                </div>
+              {/if}
+            {/if}
+            <!-- 클릭된 항목만 Nested 컴포넌트로 렌더링 -->
+            {#if currentJ === j}
+              <Nested {data} {j} />
+            {/if}
           {/if}
         {/if}
       {/each}
     </div>
     <div class="community_writes_row1">
       {#each data.write as i, j}
-        {#if data.write[j].written_type == par_type && data.write[j].announce == false}
-          {#if Math.floor(Number(par_type) / 10) == 1}
-            <!-- 각 글에 대해 고유한 j 값을 가진 div -->
-            <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <div class="writing" on:click={() => on_write(j)}>
-              <div class="writing_top">
-                <div class="writing_title">{data.write[j].title}</div>
-                <div class="writing_writer">{data.write[j].writer}</div>
-              </div>
-              <div class="writing_mid">{data.write[j].writing}</div>
-              <div class="writing_bottom">
-                <div style="flex-grow:1;display:flex; flex-direction:row">
-                  <div class="writing_good writing_goodbad">
-                    <!-- <img width="30px" src="/good_on.png" alt="" />
+        {#if data.write[j].title.indexOf(search) != -1 || data.write[j].writer.indexOf(search) != -1 || data.write[j].writing.indexOf(search) != -1}
+          {#if data.write[j].written_type == par_type && data.write[j].announce == false}
+            {#if Math.floor(Number(par_type) / 10) == 1}
+              <!-- 각 글에 대해 고유한 j 값을 가진 div -->
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
+              <div class="writing" on:click={() => on_write(j)}>
+                <div class="writing_top">
+                  <div class="writing_title">{data.write[j].title}</div>
+                  <div class="writing_writer">{data.write[j].writer}</div>
+                </div>
+                <div class="writing_mid">{data.write[j].writing}</div>
+                <div class="writing_bottom">
+                  <div style="flex-grow:1;display:flex; flex-direction:row">
+                    <div class="writing_good writing_goodbad">
+                      <!-- <img width="30px" src="/good_on.png" alt="" />
               <div style="color:white; font-weight:bold">
                 {data.write[j].like}
               </div> -->
-                  </div>
-                  <div class="writing_bad writing_goodbad">
-                    <!-- <img width="30px" src="/bad_on.png" alt="" />
+                    </div>
+                    <div class="writing_bad writing_goodbad">
+                      <!-- <img width="30px" src="/bad_on.png" alt="" />
               <div style="color:white; font-weight:bold">
                 {data.write[j].hate}
               </div> -->
-                  </div>
-                </div>
-                <div class="writing_more_watch">더보기...</div>
-              </div>
-            </div>
-          {/if}
-          {#if Math.floor(Number(par_type) / 10) == 2}
-            {#if data.user[0].grade == data.write[j].writer_grade}
-              <!-- 각 글에 대해 고유한 j 값을 가진 div -->
-              <!-- svelte-ignore a11y-click-events-have-key-events -->
-              <div class="writing" on:click={() => on_write(j)}>
-                <div class="writing_top">
-                  <div class="writing_title">{data.write[j].title}</div>
-                  <div class="writing_writer">{data.write[j].writer}</div>
-                </div>
-                <div class="writing_mid">{data.write[j].writing}</div>
-                <div class="writing_bottom">
-                  <div style="flex-grow:1;display:flex; flex-direction:row">
-                    <div class="writing_good writing_goodbad">
-                      <!-- <img width="30px" src="/good_on.png" alt="" />
-            <div style="color:white; font-weight:bold">
-              {data.write[j].like}
-            </div> -->
-                    </div>
-                    <div class="writing_bad writing_goodbad">
-                      <!-- <img width="30px" src="/bad_on.png" alt="" />
-            <div style="color:white; font-weight:bold">
-              {data.write[j].hate}
-            </div> -->
                     </div>
                   </div>
                   <div class="writing_more_watch">더보기...</div>
                 </div>
               </div>
             {/if}
-          {/if}
-          {#if Math.floor(Number(par_type) / 10) == 3}
-            {#if data.user[0].grade == data.write[j].writer_grade && data.user[0].classNo == data.write[j].writer_class}
-              <!-- 각 글에 대해 고유한 j 값을 가진 div -->
-              <!-- svelte-ignore a11y-click-events-have-key-events -->
-              <div class="writing" on:click={() => on_write(j)}>
-                <div class="writing_top">
-                  <div class="writing_title">{data.write[j].title}</div>
-                  <div class="writing_writer">{data.write[j].writer}</div>
-                </div>
-                <div class="writing_mid">{data.write[j].writing}</div>
-                <div class="writing_bottom">
-                  <div style="flex-grow:1;display:flex; flex-direction:row">
-                    <div class="writing_good writing_goodbad">
-                      <!-- <img width="30px" src="/good_on.png" alt="" />
+            {#if Math.floor(Number(par_type) / 10) == 2}
+              {#if data.user[0].grade == data.write[j].writer_grade}
+                <!-- 각 글에 대해 고유한 j 값을 가진 div -->
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <div class="writing" on:click={() => on_write(j)}>
+                  <div class="writing_top">
+                    <div class="writing_title">{data.write[j].title}</div>
+                    <div class="writing_writer">{data.write[j].writer}</div>
+                  </div>
+                  <div class="writing_mid">{data.write[j].writing}</div>
+                  <div class="writing_bottom">
+                    <div style="flex-grow:1;display:flex; flex-direction:row">
+                      <div class="writing_good writing_goodbad">
+                        <!-- <img width="30px" src="/good_on.png" alt="" />
             <div style="color:white; font-weight:bold">
               {data.write[j].like}
             </div> -->
-                    </div>
-                    <div class="writing_bad writing_goodbad">
-                      <!-- <img width="30px" src="/bad_on.png" alt="" />
+                      </div>
+                      <div class="writing_bad writing_goodbad">
+                        <!-- <img width="30px" src="/bad_on.png" alt="" />
             <div style="color:white; font-weight:bold">
               {data.write[j].hate}
             </div> -->
+                      </div>
                     </div>
+                    <div class="writing_more_watch">더보기...</div>
                   </div>
-                  <div class="writing_more_watch">더보기...</div>
                 </div>
-              </div>
+              {/if}
             {/if}
-          {/if}
-          <!-- 클릭된 항목만 Nested 컴포넌트로 렌더링 -->
-          {#if currentJ === j}
-            <Nested {data} {j} />
+            {#if Math.floor(Number(par_type) / 10) == 3}
+              {#if data.user[0].grade == data.write[j].writer_grade && data.user[0].classNo == data.write[j].writer_class}
+                <!-- 각 글에 대해 고유한 j 값을 가진 div -->
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <div class="writing" on:click={() => on_write(j)}>
+                  <div class="writing_top">
+                    <div class="writing_title">{data.write[j].title}</div>
+                    <div class="writing_writer">{data.write[j].writer}</div>
+                  </div>
+                  <div class="writing_mid">{data.write[j].writing}</div>
+                  <div class="writing_bottom">
+                    <div style="flex-grow:1;display:flex; flex-direction:row">
+                      <div class="writing_good writing_goodbad">
+                        <!-- <img width="30px" src="/good_on.png" alt="" />
+            <div style="color:white; font-weight:bold">
+              {data.write[j].like}
+            </div> -->
+                      </div>
+                      <div class="writing_bad writing_goodbad">
+                        <!-- <img width="30px" src="/bad_on.png" alt="" />
+            <div style="color:white; font-weight:bold">
+              {data.write[j].hate}
+            </div> -->
+                      </div>
+                    </div>
+                    <div class="writing_more_watch">더보기...</div>
+                  </div>
+                </div>
+              {/if}
+            {/if}
+            <!-- 클릭된 항목만 Nested 컴포넌트로 렌더링 -->
+            {#if currentJ === j}
+              <Nested {data} {j} />
+            {/if}
           {/if}
         {/if}
       {/each}
@@ -339,12 +362,14 @@
   }
   .community_writes_row {
     width: 20%;
+    height: fit-content;
     display: flex;
     align-items: center;
     flex-direction: column;
   }
   .community_writes_row1 {
     width: 80%;
+    height: fit-content;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -404,5 +429,53 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+  }
+
+  .search_container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .search_box {
+    /* align-items: center;
+    justify-content: center; */
+    width: 38%;
+    /* display: flex; */
+    /* background-color: #4370a7; */
+    /* flex-grow: 1; */
+  }
+  .search {
+    margin: 20px;
+    background-color: white;
+    height: 70px;
+    border-radius: 10px;
+    border: black 1px solid;
+    display: flex;
+  }
+
+  .search_button {
+    background-color: #112d4e;
+    width: 111px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9px 0px 0px 9px;
+  }
+
+  .search_space {
+    flex-grow: 1;
+    font-size: 25px;
+  }
+
+  .search_div {
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
   }
 </style>

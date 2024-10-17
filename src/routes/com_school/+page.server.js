@@ -18,7 +18,7 @@ export const load = async (event) => {
   const coll = db.collection("writes");
   const user = await db.collection("users").find({email:usergmail1}).toArray();
   const write = await coll.find({}).toArray();
-  console.log(user)
+  // console.log(user)
   const serializeduser = user.map(users => ({
     ...users,
     _id: users._id.toString()

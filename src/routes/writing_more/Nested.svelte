@@ -71,7 +71,7 @@
         </div>
       </div>
     </div>
-    <Nested />
+    <Nested {data} {j} />
   {/if}
 {/if}
 

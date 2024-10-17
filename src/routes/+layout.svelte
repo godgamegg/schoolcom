@@ -66,59 +66,37 @@
 
     <div class="menu_2">
       <img class="logo" src="/logo.png" alt="" />
-      <div class="search_box">
-        <div class="search_1 search">
-          <div class="search_space"></div>
-          <div class="search_button">
-            <img src="/search_button.png" alt="" />
-          </div>
-        </div>
-        <!-- <div class="search_2 search">
-          <div class="search_space"></div>
-          <div class="search_button">
-            <img src="/search_button.png" alt="" />
-          </div>
-        </div> -->
+      <div class="site_top">
+        <img width="500" src="/logo_2.png" alt="" />
       </div>
       <!-- svelte-ignore a11y-click-events-have-key-events -->
+
       <div class="button_box">
-        <!-- <div class="button">
-          <a href="/callender"
-            ><div class="clickbutton">
-              <span style="color:#EEE8F7; font-weight:bold; font-size:24px;"
-                >달력</span
-              ><img src="/callender.png" alt="" />
-            </div></a
-          >
-        </div> -->
         <div class="button">
           <a href="/users">
             <div class="clickbutton">
               <!-- <span style="color:#EEE8F7; font-weight:bold; font-size:24px;"
                 >유저</span> -->
-              <img width="200px" src="/button_png.png" alt="" />
+              <img width="150px" src="/button_png.png" alt="" />
             </div>
           </a>
         </div>
-
-        <!-- svelte-ignore missing-declaration -->
-        <!-- svelte-ignore a11y-no-static-element-interactions -->
-        <!-- <div class="button" on:click={alarm_on}>
-          <div class="clickbutton">
-            <span style="color:#EEE8F7; font-weight:bold; font-size:24px;"
-              >알림</span
-            ><img src="/alarm.png" alt="" />
+        <div style="width:150px">
+          <div class="button_1" on:click={handleSignOut}>
+            <div class="clickbutton_11">
+              <div>로그아웃</div>
+            </div>
+          </div>
+          <div class="button_1">
+            <a href="/profil_edit">
+              <div class="clickbutton_12">
+                <!-- <span style="color:#EEE8F7; font-weight:bold; font-size:24px;"
+                >유저</span> -->
+                <div>프로필 수정</div>
+              </div>
+            </a>
           </div>
         </div>
-        <div class="button">
-          <a href="/chatting">
-            <div class="clickbutton">
-              <span style="color:#EEE8F7; font-weight:bold; font-size:24px;"
-                >채팅</span
-              ><img src="/chatting.png" alt="" />
-            </div>
-          </a>
-        </div> -->
       </div>
     </div>
   </div>
@@ -250,6 +228,7 @@
 <style>
   .top_menu {
     width: 100%;
+
     height: 220px;
     background-color: #4370a7;
     display: flex;
@@ -258,7 +237,8 @@
   }
 
   .menu_1 {
-    width: 100px;
+    width: 200px;
+    /* flex-grow: 1; */
     height: 100px;
     display: flex;
     justify-content: center;
@@ -283,14 +263,15 @@
   .menu_2 {
     display: flex;
     align-items: center;
-    width: 75%;
+    /* width: 75%; */
+    flex-grow: 1;
   }
 
   .logo {
     width: 182px;
   }
 
-  .search_box {
+  .site_top {
     width: 38%;
     background-color: #4370a7;
     flex-grow: 1;
@@ -304,7 +285,7 @@
     display: flex;
   }
   .button_box {
-    width: 30%;
+    width: 40%;
     /* background-color: black; */
     height: 100%;
     display: flex;
@@ -337,7 +318,7 @@
   }
 
   .clickbutton {
-    width: 200px;
+    width: 150px;
     height: 140px;
     background-color: #112d4e;
     border-radius: 9px;
@@ -491,5 +472,44 @@
     align-items: center;
     justify-content: center;
     /* background-color: #ffffff; */
+  }
+  .site_top_1 {
+    color: #bfc5ff;
+    font-weight: bold;
+    font-size: 30px;
+    margin-left: 30px;
+  }
+  .site_top_2 {
+    color: #7a82c3;
+    font-weight: 1000;
+    font-size: 100px;
+    margin-left: 30px;
+    -webkit-text-stroke-width: 4px;
+    -webkit-text-stroke-color: #102742;
+  }
+  .clickbutton_11 {
+    border: #7a82c3 4px solid;
+    border-radius: 10px;
+    background-color: #112d4e;
+    color: white;
+    font-weight: bold;
+    padding: 20px;
+    /* width:100? */
+  }
+  .clickbutton_12 {
+    border: #7a82c3 4px solid;
+    border-radius: 10px;
+    background-color: #112d4e;
+    color: white;
+    font-weight: bold;
+    padding: 20px;
+  }
+  .button_1 {
+    width: 100%;
+    height: 110px;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>
